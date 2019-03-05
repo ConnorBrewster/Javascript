@@ -1,0 +1,40 @@
+body{
+	background-color: darkgray;
+	color: white;
+}
+h1{
+	color:white;
+	text-align: center;
+	margin-top: 0px;
+	font-size: 5em;
+}
+
+#result{
+	font-size: 25px;
+	padding:10px;
+	border-radius: 20px;
+}
+#rgb_color{
+	color:white;
+	text-align: left;
+	display: inline-block;
+	position: absolute;
+}
+#container{
+	background-color: black;
+	text-align: center;
+	width: 80%;
+	margin: auto;
+	border: 15px solid dimgray;
+}
+#imgcon{
+	padding: 10px;
+}
+a:hover{
+	background-color: #cccccc;
+	padding-top: 3%;
+	border-radius: 10px;
+}
+a{
+	transition: all 500ms ease;
+}

@@ -1,0 +1,61 @@
+body{
+	text-align: center;
+	margin: auto;
+}
+h1{
+	text-align: center;
+	margin-bottom: 0;
+	text-shadow: 1px 1px 1px;
+}
+h2{
+	margin-top: 0;
+	text-shadow: 1px 1px 1px;
+}
+#board td {
+  width: 60px; 
+  height: 60px; 
+  border: 5px solid black;  
+  text-align: center; 
+  font-size: 3em;
+  cursor: pointer;
+}
+#board td:hover{
+	background-color: #c0c0c0;
+}
+#board{
+	margin:auto;
+	border-collapse: collapse;
+	margin-top: 1%;
+}
+#results{
+	font-size: 3em;
+}
+#reset{
+	display: none;
+	margin: auto;
+	font-size: 2em;
+}
+header{
+	background-color: #808080;
+	margin-top: 0;
+}
+header a:hover{
+	background-color: #cccccc;
+	padding-top: 2%;
+	border-radius: 10px;
+	transition: all 500ms ease;
+}
+#player1{
+	display: inline-block;
+	padding: 2px;
+	background-color: lime;
+	border-radius: 5px;
+}
+#player2{
+	display: inline-block;
+	padding: 2px;
+	border-radius: 5px;
+}
+#logo{
+	float: left;
+}

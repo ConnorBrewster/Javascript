@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<link href="TicStyle.css" rel="stylesheet" type="text/css" />
+<title>TicTacToe</title>
+	<script>
+	var player = true;
+	var count = 0;
+	$(document).ready(function(){
+		$("#cell10").hide();
+		$("#cell11").hide();
+		$("#cell12").hide();
+		$("#cell13").hide();
+		$("#cell14").hide();
+		$("#cell15").hide();
+		$("#cell16").hide();
+		
+		$("#board td").click(function(){
+			if($(this).text() == "" && player == true){
+				$(this).text("X");
+					$(this).attr('style', 'color: red;');
+				if(checkWinner() == "X"){
+					alert("Player1 Wins.");
+					$("#results").text("player1 WINS");
+					$("#reset").attr("style","display: block");
+				}
+				$("#player1").attr("style","background-color: white");
+				$("#player2").attr("style","background-color: lime");
+			    player = false;
+				count++;
+			}
+			
+			if($(this).text() == "" && player == false){
+				$(this).text("O");
+				$(this).attr('style', 'color: blue;');
+				if(checkWinner() == "O"){
+					alert("Player2 Wins.");
+					$("#results").text("Player 2 Wins");
+					$("#reset").attr("style","display: block");
+				}
+				$("#player1").attr("style","background-color: lime");
+				$("#player2").attr("style","background-color: white");
+				player = true;
+				count++
+			}
+			if(checkWinner() == -1 && count >= 9){
+				$("#cell10").show();
+				$("#cell11").show();
+				$("#cell12").show();
+				$("#cell13").show();
+			}
+			if(checkWinner() == -1 && count >= 13){
+				$("#cell14").show();
+				$("#cell15").show();
+				$("#cell16").show();
+			}
+		});
+		
+function checkWinner(){
+	var cell1 = $("#cell1").text();
+	var cell2 = $("#cell2").text();
+	var cell3 = $("#cell3").text();
+	var cell4 = $("#cell4").text();
+	var cell5 = $("#cell5").text();
+	var cell6 = $("#cell6").text();
+	var cell7 = $("#cell7").text();
+	var cell8 = $("#cell8").text();
+	var cell9 = $("#cell9").text();
+	var cell10 = $("#cell10").text();
+	var cell11 = $("#cell11").text();
+	var cell12 = $("#cell12").text();
+	var cell13 = $("#cell13").text();
+	var cell14 = $("#cell14").text();
+	var cell15 = $("#cell15").text();
+	var cell16 = $("#cell16").text();
+	
+	if((cell1 == cell2) && (cell2 == cell3) && (cell3 != "")){
+		return cell3;
+	}
+	else if((cell4 == cell5) && (cell5 == cell6) && (cell6 != "")){
+		return cell6;
+	}
+	else if((cell7 == cell8) && (cell8 == cell9) && (cell9 != "")){
+		return cell9;
+	}
+	else if((cell1 == cell4) && (cell4 == cell7) && (cell7 != "")){
+		return cell7;
+	}
+	else if((cell2 == cell5) && (cell5 == cell8) && (cell8 != "")){
+		return cell8;
+	}
+	else if((cell3 == cell6) && (cell6 == cell9) && (cell9 != "")){
+		return cell9;
+	}
+	else if((cell1 == cell5) && (cell5 == cell9) && (cell9 != "")){
+		return cell9;
+	}
+	else if((cell3 == cell5) && (cell5 == cell7) && (cell6 != "")){
+		return cell7;
+	}
+	else if((cell10 == cell7) && (cell7 == cell4) && (cell6 != "")){
+		return cell10;
+	}
+	else if((cell10 == cell8) && (cell8 == cell6) && (cell6 != "")){
+		return cell6;
+	}
+	else if((cell10 == cell11) && (cell11 == cell12) && (cell12 != "")){
+		return cell12;
+	}
+	else if((cell11 == cell8) && (cell8 == cell5) && (cell5 != "")){
+		return cell5;
+	}
+	else if((cell11 == cell12) && (cell12 == cell13) && (cell13 != "")){
+		return cell13;
+	}
+	else if((cell12 == cell9) && (cell9 == cell6) && (cell6 != "")){
+		return cell6;
+	}
+	else if((cell12 == cell8) && (cell8 == cell4) && (cell4 != "")){
+		return cell12;
+	}
+	else if((cell13 == cell9) && (cell9 == cell5) && (cell5 != "")){
+		return cell13;
+	}
+	else if((cell14 == cell3) && (cell3 == cell2) && (cell4 != "")){
+		return cell14;
+	}
+	else if((cell14 == cell15) && (cell15 == cell16) && (cell16 != "")){
+		return cell16;
+	}
+	else if((cell14 == cell6) && (cell6 == cell8) && (cell8 != "")){
+		return cell8;
+	}
+	else if((cell15 == cell6) && (cell6 == cell5) && (cell15 != "")){
+		return cell15;
+	}
+	else if((cell15 == cell9) && (cell9 == cell11) && (cell11 != "")){
+		return cell11;
+	}
+	else if((cell16 == cell9) && (cell9 == cell8) && (cell16 != "")){
+		return cell16;
+	}
+	else if((cell16 == cell6) && (cell6 == cell2) && (cell16 != "")){
+		return cell16;
+	}
+	return -1;
+  }	
+		
+	});
+		
+function reset(){
+	location.reload();
+	}
+	</script>
+</head>
+<body>
+	<header>
+	<a href="index.html"><img id="imgcon"src="images/home.png" alt="HOME"></a>
+	</header>
+	<h1>Advanced Tic Tac Toe</h1>
+	<h2>Never Tie.</h2>
+	<div id="player1">Player1 = X</div> <div id="player2">Player2 = O</div><br/>
+	<table id="board">
+	<tr><td id="cell1"></td><td id="cell2"></td><td id="cell3"></td><td id="cell14"></td></tr>
+	<tr><td id="cell4"></td><td id="cell5"></td><td id="cell6"></td><td id="cell15"></td></tr>
+	<tr><td id="cell7"></td><td id="cell8"></td><td id="cell9"></td><td id=cell16></td></tr>
+	<tr><td id="cell10"></td><td id="cell11"></td><td id="cell12"></td><td id="cell13"></td></tr>
+	</table><br/>
+	<span id="results"></span>
+	<button id="reset" onclick="reset();">Reset</button>
+	<img id="logo"src="images/CBLogo.png" alt="LOGO">
+</body>
+</html>

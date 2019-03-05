@@ -1,0 +1,94 @@
+<DOCTYPE! html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<link rel="stylesheet" type="text/css" href="ColorStyle.css">
+<title>ColorPicker</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<script>
+	
+var selectedelement;
+	$(function() {
+      var ctx = document.getElementById('canvas').getContext('2d');
+      var img = new Image();
+      img.src = 'images/colorpicker.png';
+      img.onload = function(){
+      ctx.drawImage(img,0,0);
+      }
+		  
+	  
+      $('canvas').bind('mousemove', function(event){
+        var x = event.pageX - event.currentTarget.offsetLeft
+        var y = event.pageY - event.currentTarget.offsetTop;
+        var ctx = document.getElementById('canvas').getContext('2d');
+        var imgd = ctx.getImageData(x, y, 1, 1);
+        var data = imgd.data;
+        var out = $('#result');
+		var rgb = $('#rgb_color');
+		var shirt = $('#tshirt');
+		var hat = $('#hat');
+		var shoes =$('#shoes');
+        var hexString = RGBtoHex(data[0],data[1],data[2]);
+		var forground = RGBtoHex(255-data[0],255-data[1], 255-data[2]);
+        out.html("color is #" + hexString);
+		out.attr("style", "color: #" + forground + ";" + "background-color: #" + hexString + ";");  
+		rgb.html("R= " + data[0] + "<br/>" + "G= " + data[1] + "<br/>" + "B= " + data[2]);
+    	
+	
+		  	hat.click(function() {
+  				selectedelement = 1;
+		});
+		  	shirt.click(function() {
+  				selectedelement = 2;
+		});
+		    shoes.click(function() {
+  				selectedelement = 3;
+		});
+		  
+		  $( "#canvas" ).click(function() {
+			 if(selectedelement == 2){
+  				shirt.attr("style","background-color: #" + hexString + ";");
+			 	}
+			 if(selectedelement == 1){
+				 hat.attr("style","background-color: #" + hexString + ";");
+			 }
+			 if(selectedelement == 3){
+				 shoes.attr("style","background-color: #" + hexString + ";");
+			 }
+		});
+	
+	  
+	  });
+	}
+ );
+		
+function RGBtoHex(R,G,B) {
+	return toHex(R)+toHex(G)+toHex(B)
+}
+
+function toHex(N) {
+      if (N==null) return "00";
+      N=parseInt(N); if (N==0 || isNaN(N)) return "00";
+      N=Math.max(0,N); N=Math.min(N,255); N=Math.round(N);
+      return "0123456789ABCDEF".charAt((N-N%16)/16)
+           + "0123456789ABCDEF".charAt(N%16);
+}
+		
+
+	</script>
+</head>
+<body>
+	
+	<div id="container">
+		<a href="index.html"><img id="imgcon"src="images/homewhite.png" alt="HOME"></a>
+		<h1>Color Picker</h1>
+		<span id="rgb_color">R= 0<br/>G= 0<br/>B= 0</span>
+    	<canvas id="canvas" width="370" height="370" ></canvas>
+		<img src="images/newshoes.png" id="shoes" alt="SHOES">
+		<img src="images/newhat.png" id="hat" alt="HAT">
+		<img src="images/newtshirt.png" id="tshirt" alt="SHIRT">
+		<br/><br/>
+		<span id="result"></span><br/><br/>
+	</div>		
+</body>
+</html>
